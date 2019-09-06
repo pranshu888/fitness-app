@@ -11,33 +11,26 @@
         <div id="long"></div>
     </body>
     <script>
-var id, target, options;
+      if('geolocation' in navigator) {
+        var id,options;
+        function success(pos) {
+          var crd = pos.coords;
+          document.getElementById('lat').innerHTML=crd;
+        }
+        function error(err) {
+          console.log('ERROR(' + err.code + '): ' + err.message);
+        }
 
-function success(pos) {
-  var crd = pos.coords;
-    console.log(crd);
-    document.getElementById("lat").innerHTML=crd.latitude;
-    document.getElementById('long').innerHTML=crd.longitude;
-  
-}
+        options = {
+          enableHighAccuracy: true,
+          timeout: 5000,
+          maximumAge: 500
+        };
 
-function error(err) {
-  console.warn('ERROR(' + err.code + '): ' + err.message);
-}
-
-target = {
-  latitude : 0,
-  longitude: 0
-};
-
-options = {
-  enableHighAccuracy: true,
-  timeout: 5000,
-  maximumAge: 50
-};
-
-id = navigator.geolocation.watchPosition(success, error, options);
-
-
+        id = navigator.geolocation.watchPosition(success, error, options);
+      }
+      else {
+        console.log('Not available');
+      }
     </script>
 </html>
