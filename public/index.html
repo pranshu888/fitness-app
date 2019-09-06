@@ -11,7 +11,7 @@
         <div id="long"></div>
     </body>
     <script>
-        /*var id, target, options;
+var id, target, options;
 
 function success(pos) {
   var crd = pos.coords;
@@ -36,13 +36,8 @@ options = {
   maximumAge: 500
 };
 
-id = navigator.geolocation.watchPosition(success, error, options);*/
+id = navigator.geolocation.watchPosition(success, error, options);
 
-if (window.DeviceMotionEvent) {
-  window.addEventListener('devicemotion', e=> {
-    document.getElementById('long').innerHTML=e.acceleration.x;
-  });
-  //setTimeout(stopJump, 3*1000);
-}
+
     </script>
 </html>
