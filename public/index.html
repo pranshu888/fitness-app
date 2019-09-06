@@ -38,15 +38,11 @@ options = {
 
 id = navigator.geolocation.watchPosition(success, error, options);*/
 
-let sensor = new Accelerometer();
-sensor.start();
-
-sensor.onreading = () => {
-    document.write(sensor.x);
-    
+if (window.DeviceMotionEvent) {
+  window.addEventListener('devicemotion', e=> {
+    document.getElementById('long').innerHTML=e.acceleration.x;
+  });
+  //setTimeout(stopJump, 3*1000);
 }
-
-sensor.onerror = event => document.write(event.error.message);
-
     </script>
 </html>
