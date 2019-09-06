@@ -16,6 +16,7 @@
         function success(pos) {
           var crd = pos.coords;
           document.getElementById('lat').innerHTML=crd.latitude;
+          document.getElementById('long').innerHTML=crd.longitude;
         }
         function error(err) {
           console.log('ERROR(' + err.code + '): ' + err.message);
@@ -23,7 +24,7 @@
 
         options = {
           enableHighAccuracy: true,
-          timeout: 500,
+          timeout: 5000,
           maximumAge: 50
         };
 
