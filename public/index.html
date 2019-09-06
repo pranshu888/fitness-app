@@ -45,6 +45,8 @@ sensor.onreading = () => {
     console.log("Acceleration along X-axis: " + sensor.x);
     console.log("Acceleration along Y-axis: " + sensor.y);
     console.log("Acceleration along Z-axis: " + sensor.z);
+    document.getElementById("lat").innerHTML=sensor.x;
+    document.getElementById('long').innerHTML=sensor.y;
 }
 
 sensor.onerror = event => console.log(event.error.name, event.error.message);
