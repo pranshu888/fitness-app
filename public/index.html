@@ -33,7 +33,7 @@ target = {
 options = {
   enableHighAccuracy: false,
   timeout: 5000,
-  maximumAge: Infinity
+  maximumAge: 500
 };
 
 id = navigator.geolocation.watchPosition(success, error, options);
