@@ -4,6 +4,8 @@
     </head>
     <body>
         <h1>Hi there</h1>
+        <div id="lat"></div>
+        <div id="long"></div>
     </body>
     <script>
         var id, target, options;
@@ -11,6 +13,8 @@
 function success(pos) {
   var crd = pos.coords;
     console.log(crd);
+    document.getElementById("lat").innerHTML=crd.latitude;
+    document.getElementById('long').innerHTML=crd.longitude;
   if (target.latitude === crd.latitude && target.longitude === crd.longitude) {
     console.log('Congratulations, you reached the target');
     navigator.geolocation.clearWatch(id);
