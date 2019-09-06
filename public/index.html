@@ -18,10 +18,7 @@ function success(pos) {
     console.log(crd);
     document.getElementById("lat").innerHTML=crd.latitude;
     document.getElementById('long').innerHTML=crd.longitude;
-  if (target.latitude === crd.latitude && target.longitude === crd.longitude) {
-    console.log('Congratulations, you reached the target');
-    navigator.geolocation.clearWatch(id);
-  }
+  
 }
 
 function error(err) {
@@ -34,9 +31,9 @@ target = {
 };
 
 options = {
-  enableHighAccuracy: false,
+  enableHighAccuracy: true,
   timeout: 5000,
-  maximumAge: 0
+  maximumAge: 500
 };
 
 id = navigator.geolocation.watchPosition(success, error, options);
