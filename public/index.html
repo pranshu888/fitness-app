@@ -15,7 +15,7 @@
         var id,options;
         function success(pos) {
           var crd = pos.coords;
-          document.getElementById('lat').innerHTML=crd;
+          document.getElementById('lat').innerHTML=crd.latitude;
         }
         function error(err) {
           console.log('ERROR(' + err.code + '): ' + err.message);
