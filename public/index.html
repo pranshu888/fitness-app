@@ -49,8 +49,7 @@ sensor.onreading = () => {
     
 }
 
-sensor.onerror = event => document.getElementById('long').innerHTML=event.error.message;
-;
+sensor.onerror = event => document.write(event.error.message);
 
     </script>
 </html>
