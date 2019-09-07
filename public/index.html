@@ -9,14 +9,42 @@
         <h1>Hi there</h1>
         <div id="lat"></div>
         <div id="long"></div>
+        <div id="dist"></div>
     </body>
     <script>
       if('geolocation' in navigator) {
         var id,options;
+        var prevLocation = {
+          latitude: 100,
+          longitude: 200
+        };
+        var curLocation = {
+          latitude:100,
+          longitude: 200
+        };
+        var distance = 0;
         function success(pos) {
           var crd = pos.coords;
           document.getElementById('lat').innerHTML=crd.latitude;
           document.getElementById('long').innerHTML=crd.longitude;
+          if(prevLocation.latitude = 100) {
+            prevLocation.latitude = crd.latitude;
+          }
+          else {
+            prevLocation.latitude = curLocation.latitude;
+            curLocation.latitude = crd.latitude;
+          }
+          if(prevLocation.longitude = 200) {
+            prevLocation.longitude = crd.longitude;
+          }
+          else {
+            prevLocation.longitude = curLocation.longitude;
+            curLocation.longitude = crd.longitude;
+          }
+          if(curLocation.latitude!=100&&curLocation.longitude!=200) {
+            distance+=calcDistance(curLocation,prevLocation);
+            document.getElementById('dist').innerHTML = 'Distance: ' + distance;
+          }
         }
         function error(err) {
           console.log('ERROR(' + err.code + '): ' + err.message);
@@ -33,5 +61,19 @@
       else {
         console.log('Not available');
       }
+
+      //function calculates distance between two positions 
+      //takes arguements curLocation and previous location
+
+      function calcDistance(curLocation,prevLocation) {
+        var pi = Math.PI;
+        var lat1 = curLocation.latitude*(pi)/180;
+        var lat2 = curLocation.longitude*(pi)/180;
+        var long1 = prevLocation.latitude*(pi)/180;
+        var long2 = prevLocation.latitude*(pi)/180;
+        var ans = 6378.8*Math.acos(Math.sin(lat1)*Math.sin(lat2) + Math.cos(lat1)*Math.cos(lat2)*Math.cos(long2 - long1));
+        return ans;
+      }
+      console.log()
     </script>
 </html>
